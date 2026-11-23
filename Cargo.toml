@@ -1,0 +1,16 @@
+[package]
+name = "log-forwarder"
+version = "0.1.0"
+edition = "2021"
+description = "Loki의 forward_logs=\"true\" 로그 줄을 Discord 웹훅 카드로 전달"
+
+[dependencies]
+serde_json = "1"
+ureq = { version = "2", default-features = false, features = ["json", "tls"] }
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"
